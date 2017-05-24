@@ -11,3 +11,9 @@
  ul{
         list-style-type: none
     }
+
+table, tr, td, th
+{
+    border: 1px solid #efefef;
+    border-collapse: collapse
+}
