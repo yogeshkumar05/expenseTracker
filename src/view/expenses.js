@@ -157,8 +157,8 @@ export default class Expenses extends Component
         modalTitle="Update Expense Details"
 
         let modalFooter=this.state.addExpenseFlag==true?(
-            this.state.disableAdd?<Button disabled value="Add">Add</Button>:<Button  value="Add" onClick={this.addExpense}>Add</Button>):
-                        (<Button  value="Update" onClick={this.updateExpense}>Update</Button>)
+            this.state.disableAdd?<Button bsStyle="primary" disabled value="Add">Add</Button>:<Button bsStyle="primary"  value="Add" onClick={this.addExpense}>Add</Button>):
+                        (<Button bsStyle="primary"  value="Update" onClick={this.updateExpense}>Update</Button>)
           let dropdownItems=[];
         this.state.categories.map((item, index)=>
         {
@@ -221,11 +221,12 @@ export default class Expenses extends Component
             </div>);
 
         return(
-            <div>
-               <header> <h1>Expenses Details</h1></header>
-                
-                <section className="col-md-12">
-                    <div className="col-md-10">
+            <div className="col-md-12">
+               
+               
+                   <header> <h1>Expenses Details</h1></header>
+                <section className="col-md-10">
+                    
                    <Table striped bordered condensed hover>
                         <thead>
                             <tr>
@@ -238,8 +239,8 @@ export default class Expenses extends Component
                             {tableData}
                         </tbody>
                     </Table>
-                    </div>
-                    <div className="col-md-2">
+                </section>
+                    <section className="col-md-2">
                         <ButtonToolbar>
                             {
                                 this.state.disableUpdateDelete==true?<Button disabled>Update</Button>:
@@ -254,8 +255,13 @@ export default class Expenses extends Component
                             }
                         
                         </ButtonToolbar>
-                    </div>
-                </section>
+                    </section>
+               
+               
+               
+               <div className="col-md-12">
+                    <Button value="Add New Expense Entry" bsStyle="success" bsSize="large" onClick={()=>this.setState({showModal:true, addExpenseFlag:true})}>+ Add New Expense Entry</Button>
+                </div>
 
                 
                 
@@ -271,9 +277,13 @@ export default class Expenses extends Component
                         <Button onClick={()=>{this.setState({showModal:false})}}>Close</Button>
                     </Modal.Footer>
                 </Modal>
-                <section>
-                    <Button value="Add New Expense Entry" onClick={()=>this.setState({showModal:true, addExpenseFlag:true})}>+ Add New Expense Entry</Button>
-                </section>
+
+                	<hr />	
+        <footer className="col-md-12 nomargin">
+            <hr />
+            <div>&copy; 2017 Expenses Tracker</div>
+        </footer>
+                
             </div>
         )
     }
