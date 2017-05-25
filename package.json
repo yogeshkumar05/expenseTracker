@@ -45,6 +45,9 @@
     "style-loader": "^0.18.1",
     "url-loader": "^0.5.8",
     "webpack": "^2.6.0",
-    "webpack-dev-server": "^2.4.5"
+    "webpack-dev-server": "^2.4.5",
+    "react-router": "^2.0.0-rc5",
+    "react-router-dom": "^4.1.1",
+    "history": "^1.17.0"
   }
 }

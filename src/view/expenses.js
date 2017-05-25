@@ -9,13 +9,13 @@ export default class Expenses extends Component
     constructor(props)
     {
         super(props);
-       
+       alert("Inside constructor Category")
         this.state={
-             expenses:[],
+             expenses:localStorage.getItem("expenses"),
              expenseAmount:"",
              showModal:false,
              expenseDate:moment(),
-             categories:Constants.DEFAULT_CATEGORY,
+             categories:localStorage.getItem("categories"),
              addExpenseFlag:false,
              disableUpdateDelete:true,
              disableAdd:true
@@ -47,6 +47,7 @@ export default class Expenses extends Component
         expenses[updateIndex].amount=this.state.expenseAmount;
         expenses[updateIndex].date=this.state.expenseDate;
         expenses[updateIndex].checked=false;
+        localStorage.setItem("expenses",expenses)
         this.setState({expenses, showModal:false});
     }
 
@@ -64,6 +65,7 @@ export default class Expenses extends Component
 
         let expenses=this.state.expenses;
         expenses.splice(deleteIndex,1);
+        localStorage.setItem("expenses",expenses)
         this.setState({expenses, disableUpdateDelete:true});
     }
 
@@ -138,6 +140,7 @@ export default class Expenses extends Component
         
         let expenses=this.state.expenses;;
         expenses.push(expenseEntry);
+        localStorage.setItem("expenses",expenses)
         this.setState({expenses, showModal:false});
     }
 

@@ -8,22 +8,31 @@ export default class Category extends React.Component {
     constructor() {
         super()
 
-
+        
         this.state = {
             categoryName: "",
             categoryDescription: "",
             showModal: false,
-            categories: Constants.DEFAULT_CATEGORY,
+            categories: localStorage.getItem("categories"),
+            expenses: localStorage.getItem("expenses"),
             addCategoryFlag: false,
             disableUpdateDelete: true,
             disableAdd: true
         }
+        alert("Inside constructor Category "+ JSON.stringify(localStorage.getItem("categories")))
         this.categoryName = "";
         this.handleRadio = this.handleRadio.bind(this);
         this.deleteCategory = this.deleteCategory.bind(this);
         this.updateCategory = this.updateCategory.bind(this);
         this.addCategory = this.addCategory.bind(this);
         this.handleCategoryChanges = this.handleCategoryChanges.bind(this);
+    }
+
+    handleCategoryChanges(event) {
+        let disableAdd = true;
+        if (event.target.value.length > 0)
+            disableAdd = false;
+        this.setState({ categoryName: event.target.value, disableAdd });
     }
 
     addCategory() {
@@ -33,14 +42,8 @@ export default class Category extends React.Component {
         categoryEntry.default = false;
         let categories = this.state.categories;;
         categories.push(categoryEntry);
-        this.setState({ categories, showModal: false });
-    }
-
-    handleCategoryChanges(event) {
-        let disableAdd = true;
-        if (event.target.value.length > 0)
-            disableAdd = false;
-        this.setState({ categoryName: event.target.value, disableAdd });
+        localStorage.setItem("categories",categories)
+        this.setState({ categories, showModal: false });        
     }
 
     updateCategory() {
@@ -53,6 +56,7 @@ export default class Category extends React.Component {
         let categories = this.state.categories;
         categories[updateIndex].name = this.state.categoryName;
         categories[updateIndex].checked = false;
+        localStorage.setItem("categories",categories)
         this.setState({ categories, showModal: false });
     }
 
@@ -65,6 +69,7 @@ export default class Category extends React.Component {
         });
         let categories = this.state.categories;
         categories.splice(deleteIndex, 1);
+        localStorage.setItem("categories",categories)
         this.setState({ categories, disableUpdateDelete: true });
     }
 
