@@ -1,9 +1,9 @@
 module.exports = {
     DEFAULT_CATEGORY : [
-        {name : 'Food', checked : false},
-        {name : 'Entertainment', checked : false},
-        {name : 'Sports', checked : false},
-        {name : 'Shopping', checked : false},
-        {name : 'Travel', checked : false}
+        {name : 'Food', checked : false, default : true},
+        {name : 'Entertainment', checked : false, default : true},
+        {name : 'Sports', checked : false, default : true},
+        {name : 'Shopping', checked : false, default : true},
+        {name : 'Travel', checked : false, default : true}
     ]
 }

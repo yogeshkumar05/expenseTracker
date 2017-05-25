@@ -13,7 +13,7 @@ function Index(){
    localStorage.setItem("expenses",[1,2,3]);
     return(
       <div>
-      <Expenses/>
+      <Category/>
       </div>
     )
 }
