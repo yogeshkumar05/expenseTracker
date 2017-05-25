@@ -13,22 +13,20 @@ class Index extends React.Component{
 
   constructor(){
     super()
-    localStorage.setItem("categories",Constants.DEFAULT_CATEGORY)
-    localStorage.setItem("expenses",[])
+    localStorage.setItem("categories",JSON.stringify(Constants.DEFAULT_CATEGORY))
+    localStorage.setItem("expenses",JSON.stringify([]))
   }
   render(){
 
     let topNavigation = <Navbar inverse collapseOnSelect>
-                          <Navbar.Header>
-                            <Navbar.Brand>
-                              <a href="#">Expense Tracker</a>
-                            </Navbar.Brand>
+                          <Navbar.Header>                            
+                              <a className="brandName" href="#/home">Expense Tracker</a>                           
                             <Navbar.Toggle />
                           </Navbar.Header>
                           <Navbar.Collapse>
                             <Nav>
-                                <a href="#/category">Category</a>                  
-                                <a href="#/expense">Expense</a>                  
+                              <a className="navItem" href="#/category">Category</a>
+                              <a className="navItem" href="#/expense">Expense</a>                                           
                             </Nav>                            
                           </Navbar.Collapse>
                         </Navbar>
@@ -46,7 +44,9 @@ class Index extends React.Component{
 
 ReactDOM.render(
   <Router history = {hashHistory}>    
-      <Route path = "/" component = {Index}>      
+      <Route path = "/" component = {Index}> 
+        <IndexRoute component = {Home} />
+         <Route path = "home" component = {Home} />
          <Route path = "category" component = {Category} />
          <Route path = "expense" component = {Expenses} />
       </Route>

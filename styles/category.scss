@@ -37,3 +37,32 @@ table, tr, td, th
 {
     margin: 0;
 }
+
+.navItem{
+    padding: 17px;
+    float: left;
+    font-size: medium;
+    text-decoration: none;
+    color: darkgrey;
+}
+
+.brandName{
+    float: left;
+    padding: 15px;
+    font-size: large;
+    text-decoration: none;
+    color: darkgrey;
+}
+
+img{
+    width: 100%;
+    height: auto;
+}
+
+.home{
+    color : darkslateblue
+}
+
+.modal-body{
+    padding: 0px;
+}
